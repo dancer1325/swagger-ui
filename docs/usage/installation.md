@@ -3,62 +3,63 @@
 ## Distribution channels
 
 ### NPM Registry
+* 3 modules to npm -- Check main 'README.md' --
+  * **`swagger-ui`**
+    * use
+      * JS web projects / -- include -- module bundlers (Webpack, Browserify, and Rollup)
+    * Its main file -- exports -- Swagger UI's main function
+    * namespaced stylesheet at `swagger-ui/dist/swagger-ui.css`
+    * Check [Webpack Getting Started](../samples/webpack-getting-started)
+    * _Example:_
+      ```javascript
+      import SwaggerUI from 'swagger-ui'
+      // or use require if you prefer
+      const SwaggerUI = require('swagger-ui')
+      
+      SwaggerUI({
+        dom_id: '#myDomId'
+      })
+      ```    
+  * **`swagger-ui-dist`**
+    * once you import it -> includes 
+      * `absolutePath` helper function / returns the absolute filesystem path to where this module is installed
+      * mirror of the `dist` folder | this Git repository
+      * `swagger-ui-bundle.js`
+        * := build of Swagger UI / -- includes -- ALL code, needed to run in 1 file
+      * `index.html` makes easy to serve Swagger UI 
+      * `SwaggerUIBundle` (== `SwaggerUI`) and `SwaggerUIStandalonePreset`
+        * use
+          * JS project / can NOT handle a traditional npm module
+        * _Example:_
 
-We publish three modules to npm: **`swagger-ui`**, **`swagger-ui-dist`** and **`swagger-ui-react`**.
+          ```js
+          var SwaggerUIBundle = require('swagger-ui-dist').SwaggerUIBundle
+    
+          const ui = SwaggerUIBundle({
+            url: "https://petstore.swagger.io/v2/swagger.json",
+            dom_id: '#swagger-ui',
+            presets: [
+              SwaggerUIBundle.presets.apis,
+              SwaggerUIBundle.SwaggerUIStandalonePreset
+            ],
+           layout: "StandaloneLayout"
+          })
+          ```
 
-**`swagger-ui`** is meant for consumption by JavaScript web projects that include module bundlers,
-such as Webpack, Browserify, and Rollup. Its main file exports Swagger UI's main function,
-and the module also includes a namespaced stylesheet at `swagger-ui/dist/swagger-ui.css`. Here's an example:
+    * _Example:_
 
-```javascript
-import SwaggerUI from 'swagger-ui'
-// or use require if you prefer
-const SwaggerUI = require('swagger-ui')
+    ```javascript
+    const express = require('express')
+    const pathToSwaggerUi = require('swagger-ui-dist').absolutePath()
+    
+    const app = express()
+    
+    app.use(express.static(pathToSwaggerUi))
+    
+    app.listen(3000)
+    ```
 
-SwaggerUI({
-  dom_id: '#myDomId'
-})
-```
-
-See the [Webpack Getting Started](../samples/webpack-getting-started) sample for details.
-
-In contrast, **`swagger-ui-dist`** is meant for server-side projects that need assets to serve to clients. The module, when imported, includes an `absolutePath` helper function that returns the absolute filesystem path to where the `swagger-ui-dist` module is installed.
-
-_Note: we suggest using `swagger-ui` when your tooling makes it possible, as `swagger-ui-dist`
-will result in more code going across the wire._
-
-The module's contents mirror the `dist` folder you see in the Git repository. The most useful file is `swagger-ui-bundle.js`, which is a build of Swagger UI that includes all the code it needs to run in one file. The folder also has an `index.html` asset, to make it easy to serve Swagger UI like so:
-
-```javascript
-const express = require('express')
-const pathToSwaggerUi = require('swagger-ui-dist').absolutePath()
-
-const app = express()
-
-app.use(express.static(pathToSwaggerUi))
-
-app.listen(3000)
-```
-
-The module also exports `SwaggerUIBundle` and `SwaggerUIStandalonePreset`, so
-if you're in a JavaScript project that can't handle a traditional npm module,
-you could do something like this:
-
-```js
-var SwaggerUIBundle = require('swagger-ui-dist').SwaggerUIBundle
-
-const ui = SwaggerUIBundle({
-    url: "https://petstore.swagger.io/v2/swagger.json",
-    dom_id: '#swagger-ui',
-    presets: [
-      SwaggerUIBundle.presets.apis,
-      SwaggerUIBundle.SwaggerUIStandalonePreset
-    ],
-    layout: "StandaloneLayout"
-  })
-```
-
-`SwaggerUIBundle` is equivalent to `SwaggerUI`.
+  * **`swagger-ui-react`**
 
 ### Docker
 
