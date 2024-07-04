@@ -18,11 +18,12 @@
   * := traditional npm module
   * uses
     * SPA / -- are capable of -- resolving dependencies (via Webpack, Browserify, etc.).
+    * recommended one to use
 * [swagger-ui-dist](https://www.npmjs.com/package/swagger-ui-dist) 
   * := dependency-free module 
   * uses
     * serve Swagger UI on
-      * server-side project, or 
+      * server-side project / -- need assets to serve to -- clients or 
       * SPA / can NOT resolve npm module dependencies
   * vs swagger-ui
     * bigger
