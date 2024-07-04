@@ -1,33 +1,38 @@
 # <img src="https://raw.githubusercontent.com/swagger-api/swagger.io/wordpress/images/assets/SWU-logo-clr.png" width="300">
 
-[![NPM version](https://badge.fury.io/js/swagger-ui.svg)](http://badge.fury.io/js/swagger-ui)
-[![Build Status](https://jenkins.swagger.io/view/OSS%20-%20JavaScript/job/oss-swagger-ui-master/badge/icon?subject=jenkins%20build)](https://jenkins.swagger.io/view/OSS%20-%20JavaScript/job/oss-swagger-ui-master/)
-[![npm audit](https://jenkins.swagger.io/buildStatus/icon?job=oss-swagger-ui-security-audit&subject=npm%20audit)](https://jenkins.swagger.io/job/oss-swagger-ui-security-audit/lastBuild/console)
-![total GitHub contributors](https://img.shields.io/github/contributors-anon/swagger-api/swagger-ui.svg)
-
-![monthly npm installs](https://img.shields.io/npm/dm/swagger-ui.svg?label=npm%20downloads)
-![total docker pulls](https://img.shields.io/docker/pulls/swaggerapi/swagger-ui.svg)
-![monthly packagist installs](https://img.shields.io/packagist/dm/swagger-api/swagger-ui.svg?label=packagist%20installs)
-![gzip size](https://img.shields.io/bundlephobia/minzip/swagger-ui.svg?label=gzip%20size)
 
 ## Introduction
-[Swagger UI](https://swagger.io/tools/swagger-ui/) allows anyone — be it your development team or your end consumers — to visualize and interact with the API’s resources without having any of the implementation logic in place. It’s automatically generated from your OpenAPI (formerly known as Swagger) Specification, with the visual documentation making it easy for back end implementation and client side consumption.
+* [Swagger UI](https://swagger.io/tools/swagger-ui/)
+* allows
+  * visualizing and interact with the API’s resources / 👁️ without having any of the implementation logic in place 👁
+    * -> make easier for 
+      * back end implementation and
+      * client side consumption
+* how does it work?
+  * from your OpenAPI Specification️ -> automatically generated    
 
 ## General
-**👉🏼 Want to score an easy open-source contribution?** Check out our [Good first issue](https://github.com/swagger-api/swagger-ui/issues?q=is%3Aissue+is%3Aopen+label%3A%22Good+first+issue%22) label.
+3 different NPM modules:
 
-**🕰️ Looking for the older version of Swagger UI?** Refer to the [*2.x* branch](https://github.com/swagger-api/swagger-ui/tree/2.x).
+* [swagger-ui](https://www.npmjs.com/package/swagger-ui)
+  * := traditional npm module
+  * uses
+    * SPA / -- are capable of -- resolving dependencies (via Webpack, Browserify, etc.).
+* [swagger-ui-dist](https://www.npmjs.com/package/swagger-ui-dist) 
+  * := dependency-free module 
+  * uses
+    * serve Swagger UI on
+      * server-side project, or 
+      * SPA / can NOT resolve npm module dependencies
+  * vs swagger-ui
+    * bigger
+* [swagger-ui-react](https://www.npmjs.com/package/swagger-ui-react) 
+  * == Swagger UI / -- packaged as -- React component
+  * uses
+    * React applications
 
-
-This repository publishes three different NPM modules:
-
-* [swagger-ui](https://www.npmjs.com/package/swagger-ui) is a traditional npm module intended for use in single-page applications that are capable of resolving dependencies (via Webpack, Browserify, etc.).
-* [swagger-ui-dist](https://www.npmjs.com/package/swagger-ui-dist) is a dependency-free module that includes everything you need to serve Swagger UI in a server-side project, or a single-page application that can't resolve npm module dependencies.
-* [swagger-ui-react](https://www.npmjs.com/package/swagger-ui-react) is Swagger UI packaged as a React component for use in React applications.
-
-We strongly suggest that you use `swagger-ui` instead of `swagger-ui-dist` if you're building a single-page application, since `swagger-ui-dist` is significantly larger.
-
-If you are looking for plain ol' HTML/JS/CSS, [download the latest release](https://github.com/swagger-api/swagger-ui/releases/latest) and copy the contents of the `/dist` folder to your server.
+---
+* if you are looking for plain ol' HTML/JS/CSS -> copy the contents of the `/dist` folder -- to -- your server
 
 
 ## Compatibility
@@ -76,7 +81,11 @@ https://nightwatchjs.org/guide/getting-started/installation.html#install-seleniu
 Integration tests can be run locally with `npm run e2e` - be sure you aren't running a dev server when testing!
 
 ### Browser support
-Swagger UI works in the latest versions of Chrome, Safari, Firefox, and Edge.
+* latest versions of
+  * Chrome
+  * Safari
+  * Firefox
+  * Edge
 
 ### Known Issues
 
@@ -87,13 +96,3 @@ To help with the migration, here are the currently known issues with 3.X. This l
 - Support for `collectionFormat` is partial.
 - l10n (translations) is not implemented.
 - Relative path support for external files is not implemented.
-
-## Security contact
-
-Please disclose any security-related issues or vulnerabilities by emailing [security@swagger.io](mailto:security@swagger.io), instead of using the public issue tracker.
-
-## License
-
-SwaggerUI is licensed under [Apache 2.0 license](https://github.com/swagger-api/swagger-ui/blob/master/LICENSE).
-SwaggerUI comes with an explicit [NOTICE](https://github.com/swagger-api/swagger-ui/blob/master/NOTICE) file
-containing additional legal notices and information.
