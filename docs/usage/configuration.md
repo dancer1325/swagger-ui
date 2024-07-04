@@ -2,48 +2,55 @@
 
 ### How to configure
 
-Swagger UI accepts configuration parameters in three locations.
-
-From lowest to highest precedence:
-- configuration object passed as an argument to Swagger UI (`SwaggerUI({ ... })`)
-- configuration document fetched from a specified `configUrl`
-- configuration items passed as key/value pairs in the URL query string
+* allowed locations / place Swagger UI configuration parameters (from lowest to highest precedence)
+  * configuration object -- passed as an -- argument to Swagger UI (`SwaggerUI({ ... })`)
+  * configuration document -- fetched from -- specified `configUrl`
+  * configuration items -- passed as -- key/value pairs in the URL query string
 
 ### Parameters
 
-Parameters with dots in their names are single strings used to organize subordinate parameters, and are not indicative of a nested structure.
-
-For readability, parameters are grouped by category and sorted alphabetically.
-
-Type notations are formatted like so:
-- `String=""` means a String type with a default value of `""`.
-- `String=["a"*, "b", "c", "d"]` means a String type that can be `a`, `b`, `c`, or `d`, with the `*` indicating that `a` is the default value.
+* if parameters / names with '.' ->
+  * single strings
+    * != nested structure
+  * uses
+    * organize subordinate parameters 
+* grouped by category
+* sorted alphabetically
+* type notations
+  * `String=""` means a String type with a default value of `""`
+  * `String=["a"*, "b", "c", "d"]`
+    * == String type /
+      * allowed
+        * `a`, `b`, `c`, or `d`
+      * `a` is the default 
+        * Reason: 🧠 due to `*` 🧠 
 
 ##### Core
 
 Parameter name | Docker variable | Description
---- | --- | -----
-<a name="configUrl"></a>`configUrl` | `CONFIG_URL` |  `String`. URL to fetch external configuration document from.
-<a name="dom_id"></a>`dom_id` | `DOM_ID` |`String`, **REQUIRED** if `domNode` is not provided. The ID of a DOM element inside which `SwaggerUI` will put its user interface.
-<a name="domNode"></a>`domNode` | _Unavailable_ | `Element`, **REQUIRED** if `dom_id` is not provided. The HTML DOM element inside which `SwaggerUI` will put its user interface. Overrides `dom_id`.
-<a name="spec"></a>`spec` | `SPEC` | `Object={}`. A JavaScript object describing the OpenAPI definition. When used, the `url` parameter will not be parsed. This is useful for testing manually-generated definitions without hosting them.
-<a name="url"></a>`url` | `URL` | `String`. The URL pointing to API definition (normally `swagger.json` or `swagger.yaml`). Will be ignored if `urls` or `spec` is used.
-<a name="urls"></a>`urls` | `URLS` | `Array`. An array of API definition objects (`[{url: "<url1>", name: "<name1>"},{url: "<url2>", name: "<name2>"}]`) used by Topbar plugin. When used and Topbar plugin is enabled, the `url` parameter will not be parsed. Names and URLs must be unique among all items in this array, since they're used as identifiers.
-<a name="urls.primaryName"></a>`urls.primaryName` | `URLS_PRIMARY_NAME` | `String`. When using `urls`, you can use this subparameter. If the value matches the name of a spec provided in `urls`, that spec will be displayed when Swagger UI loads, instead of defaulting to the first spec in `urls`.
-<a name="queryConfigEnabled"></a>`queryConfigEnabled` | `QUERY_CONFIG_ENABLED` | `Boolean=false`. Enables overriding configuration parameters via URL search params.  
+--- | --- | ------
+<a name="configUrl"></a>`configUrl` | `CONFIG_URL` | - `String` <br> - := URL -- to fetch -- external configuration document from.
+<a name="dom_id"></a>`dom_id` | `DOM_ID` | - `String` <br> - if `domNode` is NOT provided -> **REQUIRED** <br> - := ID of a DOM element on which `SwaggerUI` -- will put -- its user interface.
+<a name="domNode"></a>`domNode` | _Unavailable_ | - `Element` <br> - if `dom_id` is not provided ->  **REQUIRED** <br> - := HTML DOM element on which `SwaggerUI` -- will put -- its user interface <br> - Overrides `dom_id`
+<a name="spec"></a>`spec` | `SPEC` | - `Object={}` <br> - := JS object / describe the OpenAPI definition <br> - if it's used ->  `url` parameter will NOT be parsed <br> - Use : testing manually-generated definitions / NO hosting them.
+<a name="url"></a>`url` | `URL` | - `String` <br> - := URL / -- pointing to -- API definition (normally `swagger.json` or `swagger.yaml`) <br> - if `urls` or `spec` is used -> will be ignored
+<a name="urls"></a>`urls` | `URLS` | - `Array` <br> - := array of API definition objects ( -- _Example:_ `[{url: "<url1>", name: "<name1>"},{url: "<url2>", name: "<name2>"}]`--) <br> - Use: Topbar plugin <br> - if you use it & Topbar plugin is enabled -> `url` parameter will NOT be parsed <br> - Names and URLs must be unique among all items in this array -- Reason: 🧠 they're used as identifiers 🧠 --
+<a name="urls.primaryName"></a>`urls.primaryName` | `URLS_PRIMARY_NAME` | - `String`<br> - Requirements: use `urls` <br> - If the value -- matches the -- name of a spec / provided in `urls`, -> that spec will be displayed when Swagger UI loads -- instead of defaulting to the first spec in `urls` --
+<a name="queryConfigEnabled"></a>`queryConfigEnabled` | `QUERY_CONFIG_ENABLED` | - `Boolean=false` <br> - Enables overriding configuration parameters -- via -- URL search params.  
 
 ##### Plugin system
 
-Read more about the plugin system in the [Customization documentation](/docs/customization/overview.md).
+* Check more in  [Customization documentation](/docs/customization/overview.md).
 
 Parameter name | Docker variable | Description
 --- | --- | -----
-<a name="layout"></a>`layout` | _Unavailable_ | `String="BaseLayout"`. The name of a component available via the plugin system to use as the top-level layout for Swagger UI.
-<a name="plugins"></a>`plugins` | _Unavailable_ | `Array=[]`. An array of plugin functions to use in Swagger UI.
-<a name="presets"></a>`presets` | _Unavailable_ | `Array=[SwaggerUI.presets.ApisPreset]`. An array of presets to use in Swagger UI. Usually, you'll want to include `ApisPreset` if you use this option.
+<a name="layout"></a>`layout` | _Unavailable_ | - `String="BaseLayout"` <br> - :=componentName / <br> &nbsp; &nbsp; available via the plugin system <br> &nbsp; &nbsp; Use: top-level layout for Swagger UI.
+<a name="plugins"></a>`plugins` | _Unavailable_ | - `Array=[]` <br> - := array of plugin functions / use in Swagger UI.
+<a name="presets"></a>`presets` | _Unavailable_ | - `Array=[SwaggerUI.presets.ApisPreset]` <br> - := array of presets / use in Swagger UI <br> - if you use it -> you'll want to include `ApisPreset`
+
 
 ##### Display
-
+TODO:
 <table role="table">
     <thead>
     <tr>
