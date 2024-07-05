@@ -78,7 +78,7 @@
   * allows
     * providing your own swagger.json on your host
       ```sh
-      docker run -p 80:8080 -e SWAGGER_JSON=/foo/swagger.json -v /bar:/foo swaggerapi/swagger-ui
+      docker run -p 80:8080 -e SWAGGER_JSON=simpleopenapi.json -v /bar:/foo swaggerapi/swagger-ui
       ```
       * Problems:
         * Problem1: No content displayed in `localhost:8080/`
@@ -93,7 +93,7 @@
     * changing base URL of the web application -- `BASE_URL` --
 
       ```sh
-      docker run -p 80:8080 -e BASE_URL=/swagger -e SWAGGER_JSON=/foo/swagger.json -v /bar:/foo swaggerapi/swagger-ui
+      docker run -p 80:8080 -e BASE_URL=/swagger -e SWAGGER_JSON=simpleopenapi.json -v /bar:/foo swaggerapi/swagger-ui
       ```
       * Problems:
         * Problem1: No content displayed in `localhost:8080/swagger` 
