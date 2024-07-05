@@ -1,60 +1,65 @@
 # CORS
+* := technique /
+  * allows
+    * preventing bad action with personal data in websites
+  * enforce it by most browsers + JavaScript toolkits
+    * -> implications for your API server / supports Swagger
+* Check http://www.w3.org/TR/cors
+* 👁️cases / NO action is needed 👁️
+  * Swagger UI -- is hosted on the same server (host & port) as -- the application itself
+  * Application -- is located -- behind a proxy / enables the required CORS headers
+* 👁️cases / you need to enable it 👁️
+  * Swagger docs / externally `$ref`ed docs
+  * `Try it now` button enabled to work
+    * -> CORS needs to be enabled on your API endpoints as well.
 
-CORS is a technique to prevent websites from doing bad things with your personal data.  Most browsers + JavaScript toolkits not only support CORS but enforce it, which has implications for your API server which supports Swagger.
+### Ways to test CORS Support
+* There are 3 techniques
 
-You can read about CORS here: http://www.w3.org/TR/cors.
+  * Curl your API and inspect the headers
 
-There are two cases where no action is needed for CORS support:
+    ```bash
+    $ curl -I "https://petstore.swagger.io/v2/swagger.json"
+    HTTP/1.1 200 OK
+    Date: Sat, 31 Jan 2015 23:05:44 GMT
+    Access-Control-Allow-Origin: *
+    Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS
+    Access-Control-Allow-Headers: Content-Type, api_key, Authorization
+    Content-Type: application/json
+    Content-Length: 0
+    ```
+    * supports
+      * OPTIONS
+      * headers:  `Content-Type`, `api_key`, `Authorization`
 
-1. Swagger UI is hosted on the same server as the application itself (same host *and* port).
-2. The application is located behind a proxy that enables the required CORS headers. This may already be covered within your organization.
+  * Try Swagger UI from your file system and look at the debug console
+    * If CORS is NOT enabled ->  you'll see something like
 
-Otherwise, CORS support needs to be enabled for:
+      ```
+      XMLHttpRequest cannot load http://sad.server.com/v2/api-docs. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.
+      ```
 
-1. Your Swagger docs. For Swagger 2.0 it's the `swagger.json`/`swagger.yaml` and any externally `$ref`ed docs.
-2. For the `Try it now` button to work, CORS needs to be enabled on your API endpoints as well.
-
-### Testing CORS Support
-
-You can verify CORS support with one of three techniques:
-
-- Curl your API and inspect the headers.  For instance:
-
-```bash
-$ curl -I "https://petstore.swagger.io/v2/swagger.json"
-HTTP/1.1 200 OK
-Date: Sat, 31 Jan 2015 23:05:44 GMT
-Access-Control-Allow-Origin: *
-Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS
-Access-Control-Allow-Headers: Content-Type, api_key, Authorization
-Content-Type: application/json
-Content-Length: 0
-```
-
-This tells us that the petstore resource listing supports OPTIONS, and the following headers:  `Content-Type`, `api_key`, `Authorization`.
-
-- Try Swagger UI from your file system and look at the debug console.  If CORS is not enabled, you'll see something like this:
-
-```
-XMLHttpRequest cannot load http://sad.server.com/v2/api-docs. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.
-```
-
-Swagger UI cannot easily show this error state.
-
-- Use the https://www.test-cors.org website to verify CORS support. Keep in mind this will show a successful result even if `Access-Control-Allow-Headers` is not available, which is still required for Swagger UI to function properly.
+  * Use the https://www.test-cors.org website
+    * Even if `Access-Control-Allow-Headers` is NOT available -> show a successful result
+      * 👁️STILL required for Swagger UI 👁️
+---
 
 ### Enabling CORS
+* Way to enable CORS -- depends on --
+  * server / host your application
+  * framework / host your application
+* https://enable-cors.org
+  * how to enable CORS | common web servers
 
-The method of enabling CORS depends on the server and/or framework you use to host your application. https://enable-cors.org provides information on how to enable CORS in some common web servers.
-
-Other servers/frameworks may provide you information on how to enable it specifically in their use case.
+---
 
 ### CORS and Header Parameters
-
-Swagger UI lets you easily send headers as parameters to requests.  The name of these headers *MUST* be supported in your CORS configuration as well.  From our example above:
-
-```
-Access-Control-Allow-Headers: Content-Type, api_key, Authorization
-```
-
-Only headers with these names will be allowed to be sent by Swagger UI.
+* Swagger UI 
+  * allows 
+    * headers
+      * -- are sent as -- parameters to requests
+      * their names -- *MUST* be supported in -- CORS configuration
+      * unique allowed to be sent 
+      ```
+      Access-Control-Allow-Headers: Content-Type, api_key, Authorization
+      ```
