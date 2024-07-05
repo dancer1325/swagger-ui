@@ -6,6 +6,7 @@
   * configuration object -- passed as an -- argument to Swagger UI (`SwaggerUI({ ... })`)
   * configuration document -- fetched from -- specified `configUrl`
   * configuration items -- passed as -- key/value pairs in the URL query string
+---
 
 ### Parameters
 
@@ -310,6 +311,7 @@ Parameter name | Docker variable | Description
 Parameter name | Docker variable | Description
 --- | --- | -----
 <a name="persistAuthorization"></a>`persistAuthorization` | `PERSIST_AUTHORIZATION` | `Boolean=false`. If set to `true`, it persists authorization data and it would not be lost on browser close/refresh
+---
 
 ### Instance methods
 
@@ -320,71 +322,67 @@ Method name | Docker variable | Description
 <a name="initOAuth"></a>`initOAuth` | [_See `oauth2.md`_](./oauth2.md) | `(configObj) => void`. Provide Swagger UI with information about your OAuth server - see the [OAuth 2.0 documentation](./oauth2.md) for more information.
 <a name="preauthorizeBasic"></a>`preauthorizeBasic` | _Unavailable_ | `(authDefinitionKey, username, password) => action`. Programmatically set values for a Basic authorization scheme.
 <a name="preauthorizeApiKey"></a>`preauthorizeApiKey` | _Unavailable_ | `(authDefinitionKey, apiKeyValue) => action`. Programmatically set values for an API key or Bearer authorization scheme. In case of OpenAPI 3.0 Bearer scheme, `apiKeyValue` must contain just the token itself without the `Bearer` prefix.
+---
 
 ### Docker
-
-If you're using the Docker image, you can also control most of these options with environment variables. Each parameter has its environment variable name noted, if available.
-
-Below are the general guidelines for using the environment variable interface.
+* Most of these options -- can be controlled with -- environment variables
+  * if available -> 1 environment variable / parameter
 
 ##### String variables
+* `ENVIRONMENT_VARIABLE="desiredValue"`
+  * `\` for escaping characters
+* _Example:_
 
-Set the value to whatever string you'd like, taking care to escape characters where necessary
-
-Example:
-
-```sh
-FILTER="myFilterValue"
-LAYOUT="BaseLayout"
-```
+  ```sh
+  FILTER="myFilterValue"
+  LAYOUT="BaseLayout"
+  ```
 
 ##### Boolean variables
+* `ENVIRONMENT_VARIABLE="trueOrFalse"`
+  * `\` for escaping characters
+* _Example:_
 
-Set the value to `true` or `false`.
-
-Example:
-
-```sh
-DISPLAY_OPERATION_ID="true"
-DEEP_LINKING="false"
-```
+  ```sh
+  DISPLAY_OPERATION_ID="true"
+  DEEP_LINKING="false"
+  ```
 
 ##### Number variables
+* `ENVIRONMENT_VARIABLE="number"`
+  * `\` for escaping characters
+* _Example:_
 
-Set the value to _`n`_, where _n_ is the number you'd like to provide.
-
-Example:
-
-```sh
-DEFAULT_MODELS_EXPAND_DEPTH="5"
-DEFAULT_MODEL_EXPAND_DEPTH="7"
-```
+  ```sh
+  DEFAULT_MODELS_EXPAND_DEPTH="5"
+  DEFAULT_MODEL_EXPAND_DEPTH="7"
+  ```
 
 ##### Array variables
+* `ENVIRONMENT_VARIABLE="[items]"`
+  * `\` for escaping characters
+* _Example:_
 
-Set the value to the literal array value you'd like, taking care to escape characters where necessary.
-
-Example:
-
-```sh
-SUPPORTED_SUBMIT_METHODS="[\"get\", \"post\"]"
-URLS="[ { url: \"https://petstore.swagger.io/v2/swagger.json\", name: \"Petstore\" } ]"
-```
+  ```sh
+  SUPPORTED_SUBMIT_METHODS="[\"get\", \"post\"]"
+  URLS="[ { url: \"https://petstore.swagger.io/v2/swagger.json\", name: \"Petstore\" } ]"
+  ```
 
 ##### Object variables
+* `ENVIRONMENT_VARIABLE="{objectProperties}"`
+  * `\` for escaping characters
+* _Example:_
 
-Set the value to the literal object value you'd like, taking care to escape characters where necessary.
-
-Example:
-
-```sh
-SPEC="{ \"openapi\": \"3.0.0\" }"
-```
+  ```sh
+  SPEC="{ \"openapi\": \"3.0.0\" }"
+  ```
+---
 
 ### Docker-Compose
 
 #### .env file example encoding
-```sh
-SUPPORTED_SUBMIT_METHODS=['get', 'post']
-URLS=[ { url: 'https://petstore.swagger.io/v2/swagger.json', name: 'Petstore' } ]
-```
+* ❓
+  ```sh
+  SUPPORTED_SUBMIT_METHODS=['get', 'post']
+  URLS=[ { url: 'https://petstore.swagger.io/v2/swagger.json', name: 'Petstore' } ]
+  ```
