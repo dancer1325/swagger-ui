@@ -1,6 +1,5 @@
 # Helpful scripts
-
-Any of the scripts below can be run by typing `npm run <script name>` in the project's root directory.
+* `npm run scriptName`
 
 ### Developing
 Script name | Description
