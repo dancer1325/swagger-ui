@@ -10,4 +10,4 @@
 * `npm start`
   * Problems:
     * Problem1: "[webpack-cli] Error: For the selected environment is no default script chunk format available:"
-      * Solution: TODO:
+      * Solution: Add `output.chunkFormat` and "browserslist"
