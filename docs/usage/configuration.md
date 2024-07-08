@@ -51,7 +51,6 @@ Parameter name | Docker variable | Description
 
 
 ##### Display
-TODO:
 <table role="table">
     <thead>
     <tr>
@@ -117,9 +116,9 @@ TODO:
         </td>
         <td><code>DOC_EXPANSION</code></td>
         <td> -<code>String=["list"*, "full", "none"]</code> <br>
-             - default expansion setting / operations and tags: <br>
-             &nbsp; &nbsp;  'list' == expands only the tags, <br>
-             &nbsp; &nbsp; 'full' == expands the tags and operations <br>
+             - expansion setting / operations & tags: <br>
+             &nbsp; &nbsp; 'list' == expands only the tags, <br>
+             &nbsp; &nbsp; 'full' == expands the tags and operations -- default one -- <br>
              &nbsp; &nbsp; 'none' == expands nothing
         </td>
     </tr>
@@ -286,6 +285,8 @@ TODO:
     </tr>
     </tbody>
 </table>
+
+* Check '/samples/webpack-getting-started'
 
 ##### Network
 
