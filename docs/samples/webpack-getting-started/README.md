@@ -11,3 +11,5 @@
   * Problems:
     * Problem1: "[webpack-cli] Error: For the selected environment is no default script chunk format available:"
       * Solution: Add `output.chunkFormat` and "browserslist"
+* Open in your desired browser -- "http://localhost:8080"
+  * Check that OpenAPI specification in "swagger-config.yaml" is displayed
