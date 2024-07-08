@@ -116,10 +116,11 @@ TODO:
         <td><a name="user-content-docexpansion"></a><code>docExpansion</code>
         </td>
         <td><code>DOC_EXPANSION</code></td>
-        <td><code>String=["list"*, "full", "none"]</code>. Controls the default
-            expansion setting for the operations and tags. It can be 'list'
-            (expands only the tags), 'full' (expands the tags and operations) or
-            'none' (expands nothing).
+        <td> -<code>String=["list"*, "full", "none"]</code> <br>
+             - default expansion setting / operations and tags: <br>
+             &nbsp; &nbsp;  'list' == expands only the tags, <br>
+             &nbsp; &nbsp; 'full' == expands the tags and operations <br>
+             &nbsp; &nbsp; 'none' == expands nothing
         </td>
     </tr>
     <tr>
