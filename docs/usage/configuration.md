@@ -179,13 +179,14 @@ Parameter name | Docker variable | Description
     <tr>
         <td><a name="user-content-tagsorter"></a><code>tagsSorter</code></td>
         <td><em>Unavailable</em></td>
-        <td><code>Function=(a =&gt; a)</code>. Apply a sort to the tag list of
-            each API. It can be 'alpha' (sort by paths alphanumerically) or a
-            function (see <a
+        <td>- := <code>Function=(a =&gt; a)</code> / <br>
+            &nbsp; &nbsp; sort the tag list of each API <br>
+            - allowed values <br>
+            &nbsp; &nbsp; 'alpha' == by tags alphanumerically) <br>
+            &nbsp; &nbsp; 'function( tag1, tag2)'  (Check <a
                     href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort"
-                    rel="nofollow">Array.prototype.sort()</a> to learn how to
-            write a sort function). Two tag name strings are passed to the
-            sorter for each pass. Default is the order determined by Swagger UI.
+                    rel="nofollow">Array.prototype.sort()</a> to write a sort function) <br>
+            &nbsp; &nbsp; Default == order determined by Swagger UI
         </td>
     </tr>
     <tr>

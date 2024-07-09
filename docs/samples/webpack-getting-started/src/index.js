@@ -14,7 +14,11 @@ const ui = SwaggerUI({
 
   // operationsSorter     if you do NOT specify == default one
   //operationsSorter:"alpha"
-  operationsSorter:"method"
+  operationsSorter:"method",
+
+  // tagsSorter           if you do NOT specify == default one == determined by Swagger UI
+  tagsSorter:"alpha",
+  //tagsSorter:"functionPendingToAdd"
 })
 
 ui.initOAuth({

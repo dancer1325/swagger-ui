@@ -35,6 +35,8 @@ paths:
           description: "Unauthorized"
         200:
           description: "OK"
+      tags:
+        - c
   /test:
     get:
       summary: "Runs a test request against the Identity Server demo API"
@@ -43,6 +45,8 @@ paths:
           description: "Unauthorized"
         200:
           description: "OK"
+      tags:
+        - b
   /atest:
     get:
       summary: "Runs a test request against the Identity Server demo API"
@@ -51,3 +55,5 @@ paths:
           description: "Unauthorized"
         200:
           description: "OK"
+      tags:
+        - a
