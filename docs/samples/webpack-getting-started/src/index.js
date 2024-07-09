@@ -6,11 +6,15 @@ const spec = require('./swagger-config.yaml');
 const ui = SwaggerUI({
   spec,
   dom_id: "#swagger",
+
   /*docExpansion: "full", "list" OR "none" */
   // docExpansion: "full" -- default one --,
   //docExpansion: "list"
-  docExpansion: "none"
-  /*layout: ""*/
+  docExpansion: "none",
+
+  // operationsSorter     if you do NOT specify == default one
+  //operationsSorter:"alpha"
+  operationsSorter:"method"
 })
 
 ui.initOAuth({

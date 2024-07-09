@@ -148,11 +148,12 @@ Parameter name | Docker variable | Description
             <a name="user-content-operationssorter"></a><code>operationsSorter</code>
         </td>
         <td><em>Unavailable</em></td>
-        <td><code>Function=(a =&gt; a)</code>. Apply a sort to the operation
-            list of each API. It can be 'alpha' (sort by paths
-            alphanumerically), 'method' (sort by HTTP method) or a function (see
-            Array.prototype.sort() to know how sort function works). Default is
-            the order returned by the server unchanged.
+        <td>- := <code>Function=(a =&gt; a)</code> / <br>
+            &nbsp; &nbsp; sort the operation list of each API <br>
+            - allowed values <br>
+            &nbsp; &nbsp; 'alpha' == by paths alphanumerically, <br>
+            &nbsp; &nbsp; 'method' == by HTTP method or function (== Array.prototype.sort() to know how sort function works) <br>
+            &nbsp; &nbsp; Default == returned by the server
         </td>
     </tr>
     <tr>

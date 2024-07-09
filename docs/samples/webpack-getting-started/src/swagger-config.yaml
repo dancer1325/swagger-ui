@@ -20,7 +20,30 @@ security:
   - identity_server_auth:
     - api
 paths:
+  /btest:
+    post:
+      summary: "Runs a test request against the Identity Server demo API"
+      responses:
+        401:
+          description: "Unauthorized"
+        200:
+          description: "OK"
+    delete:
+      summary: "Runs a test request against the Identity Server demo API"
+      responses:
+        401:
+          description: "Unauthorized"
+        200:
+          description: "OK"
   /test:
+    get:
+      summary: "Runs a test request against the Identity Server demo API"
+      responses:
+        401:
+          description: "Unauthorized"
+        200:
+          description: "OK"
+  /atest:
     get:
       summary: "Runs a test request against the Identity Server demo API"
       responses:
