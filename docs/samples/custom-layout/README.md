@@ -1,4 +1,4 @@
-### Demo of Custom Layour
+### Demo of Custom Layout
 * includes
   * CSS
   * OAuth configuration
