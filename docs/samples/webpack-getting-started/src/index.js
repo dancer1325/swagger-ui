@@ -1,5 +1,5 @@
 import SwaggerUI from 'swagger-ui'
-import 'swagger-ui/dist/swagger-ui.css';
+import 'swagger-ui/dist/swagger-ui.css';    // Important to import the Swagger UI styles
 
 const spec = require('./swagger-config.yaml');
 
