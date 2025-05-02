@@ -1,7 +1,5 @@
 # Swagger UI
 
-Welcome to the Swagger UI documentation!
-
 ## Usage
 
 - [Installation](usage/installation.md)
