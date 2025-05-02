@@ -1,65 +1,49 @@
-# Installation
+# How to install?
 
-## Distribution channels
+## -- via -- distribution channels
 
 ### NPM Registry
-* 3 modules to npm -- Check main 'README.md' --
-  * **`swagger-ui`**
-    * use
-      * JS web projects / -- include -- module bundlers (Webpack, Browserify, and Rollup)
-    * Its main file -- exports -- Swagger UI's main function
-    * namespaced stylesheet at `swagger-ui/dist/swagger-ui.css`
-    * Check [Webpack Getting Started](../samples/webpack-getting-started)
-    * _Example:_
-      ```javascript
-      import SwaggerUI from 'swagger-ui'
-      // or use require if you prefer
-      const SwaggerUI = require('swagger-ui')
-      
-      SwaggerUI({
-        dom_id: '#myDomId'
-      })
-      ```    
-  * **`swagger-ui-dist`**
-    * once you import it -> includes 
-      * `absolutePath` helper function / returns the absolute filesystem path to where this module is installed
-      * mirror of the `dist` folder | this Git repository
-      * `swagger-ui-bundle.js`
-        * := build of Swagger UI / -- includes -- ALL code, needed to run in 1 file
-      * `index.html` makes easy to serve Swagger UI 
-      * `SwaggerUIBundle` (== `SwaggerUI`) and `SwaggerUIStandalonePreset`
-        * use
-          * JS project / can NOT handle a traditional npm module
-        * _Example:_
+* `swagger-ui`
+  * _Example:_ [here](../samples/swagger-ui-webpack-getting-started)
+* **`swagger-ui-dist`**
+  * once you import it -> includes 
+    * `absolutePath` helper function / returns the absolute filesystem path to where this module is installed
+    * mirror of the `dist` folder | this Git repository
+    * `swagger-ui-bundle.js`
+      * := build of Swagger UI / -- includes -- ALL code, needed to run in 1 file
+    * `index.html` makes easy to serve Swagger UI 
+    * `SwaggerUIBundle` (== `SwaggerUI`) and `SwaggerUIStandalonePreset`
+      * use
+        * JS project / can NOT handle a traditional npm module
+      * _Example:_
 
-          ```js
-          var SwaggerUIBundle = require('swagger-ui-dist').SwaggerUIBundle
+        ```js
+        var SwaggerUIBundle = require('swagger-ui-dist').SwaggerUIBundle
     
-          const ui = SwaggerUIBundle({
-            url: "https://petstore.swagger.io/v2/swagger.json",
-            dom_id: '#swagger-ui',
-            presets: [
-              SwaggerUIBundle.presets.apis,
-              SwaggerUIBundle.SwaggerUIStandalonePreset
-            ],
-           layout: "StandaloneLayout"
-          })
-          ```
+        const ui = SwaggerUIBundle({
+          url: "https://petstore.swagger.io/v2/swagger.json",
+          dom_id: '#swagger-ui',
+          presets: [
+            SwaggerUIBundle.presets.apis,
+            SwaggerUIBundle.SwaggerUIStandalonePreset
+          ],
+         layout: "StandaloneLayout"
+        })
+        ```
 
-    * _Example:_
+  * _Example:_
 
-    ```javascript
-    const express = require('express')
-    const pathToSwaggerUi = require('swagger-ui-dist').absolutePath()
+  ```javascript
+  const express = require('express')
+  const pathToSwaggerUi = require('swagger-ui-dist').absolutePath()
     
-    const app = express()
+  const app = express()
     
-    app.use(express.static(pathToSwaggerUi))
+  app.use(express.static(pathToSwaggerUi))
     
-    app.listen(3000)
-    ```
-
-  * **`swagger-ui-react`**
+  app.listen(3000)
+  ```
+* **`swagger-ui-react`**
 
 ### Docker
 * There is pre-built docker image of the swagger-ui in Docker Hub
@@ -124,40 +108,17 @@
       * Should I see some difference ❓Or how to test it?
     * For more, check [Configuration documentation](configuration.md#docker).
 
-### unpkg
+### [unpkg](https://unpkg.com/)
 
-You can embed Swagger UI's code directly in your HTML by using [unpkg's](https://unpkg.com/) interface:
+* unpkg
+  * == interface
+  * allows
+    * embedding Swagger UI's code | your HTML
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="SwaggerUI" />
-  <title>SwaggerUI</title>
-  <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui.css" />
-</head>
-<body>
-<div id="swagger-ui"></div>
-<script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-bundle.js" crossorigin></script>
-<script>
-  window.onload = () => {
-    window.ui = SwaggerUIBundle({
-      url: 'https://petstore3.swagger.io/api/v3/openapi.json',
-      dom_id: '#swagger-ui',
-    });
-  };
-</script>
-</body>
-</html>
-```
-
-Using `StandalonePreset` will render `TopBar` and `ValidatorBadge` as well.
-
-```html
-<!DOCTYPE html>
-<html lang="en">
+* _Example:_
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -168,36 +129,68 @@ Using `StandalonePreset` will render `TopBar` and `ValidatorBadge` as well.
   <body>
   <div id="swagger-ui"></div>
   <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-bundle.js" crossorigin></script>
-  <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-standalone-preset.js" crossorigin></script>
   <script>
     window.onload = () => {
       window.ui = SwaggerUIBundle({
         url: 'https://petstore3.swagger.io/api/v3/openapi.json',
         dom_id: '#swagger-ui',
-        presets: [
-          SwaggerUIBundle.presets.apis,
-          SwaggerUIStandalonePreset
-        ],
-        layout: "StandaloneLayout",
       });
     };
   </script>
   </body>
-</html>
-```
+  </html>
+  ```
 
-See [unpkg's main page](https://unpkg.com/) for more information on how to use unpkg.
+* `StandalonePreset`
+  * ALSO render `TopBar` & `ValidatorBadge`
+  * _Example:_
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="SwaggerUI" />
+        <title>SwaggerUI</title>
+        <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui.css" />
+    </head>
+    <body>
+    <div id="swagger-ui"></div>
+    <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-bundle.js" crossorigin></script>
+    <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-standalone-preset.js" crossorigin></script>
+    <script>
+        window.onload = () => {
+        window.ui = SwaggerUIBundle({
+            url: 'https://petstore3.swagger.io/api/v3/openapi.json',
+            dom_id: '#swagger-ui',
+            presets: [
+            SwaggerUIBundle.presets.apis,
+            SwaggerUIStandalonePreset
+            ],
+            layout: "StandaloneLayout",
+        });
+        };
+    </script>
+    </body>
+    </html>
+    ```
 
-### Static files without HTTP or HTML
+### Static files -- WITHOUT -- HTTP or HTML
 
-Once swagger-ui has successfully generated the `/dist` directory, you can copy this to your own file system and host from there.
+* steps
+  * swagger-ui generates `dist/`
+  * copy `dist/` & place | your OWN file system
 
-## Plain old HTML/CSS/JS (Standalone)
+## -- via --Plain old HTML/CSS/JS (Standalone)
 
-The folder `/dist` includes all the HTML, CSS and JS files needed to run SwaggerUI on a static website or CMS, without requiring NPM.
+* == ❌NO need of NPM ❌
+* `/dist`
+  * == ALL HTML + CSS + JS files /
+    * allows
+      * run SwaggerUI | static website or CMS
 
-1. Download the [latest release](https://github.com/swagger-api/swagger-ui/releases/latest).
-1. Copy the contents of the `/dist` folder to your server.
-1. Open `swagger-initializer.js` in your text editor and replace "https://petstore.swagger.io/v2/swagger.json" with the URL for your OpenAPI 3.0 spec.
-
-
+* steps
+  1. download [swagger UI release](https://github.com/swagger-api/swagger-ui/releases/latest)
+  2. copy `/dist` | your server
+  3. | `swagger-initializer.js`
+     1. replace "https://petstore.swagger.io/v2/swagger.json" -- with your -- OpenAPI 3.0 spec's URL

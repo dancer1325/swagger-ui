@@ -1,13 +1,9 @@
-# Demo of Swagger UI with Webpack.
+# Swagger UI + Webpack
 * includes
   * CSS
   * OAuth configuration
 * `_sample_package.json`
   * placeholder sample
-
-## Configurations put in practice
-* `docExpansion`
-* `operationsSorter`
 
 ## How to run locally?
 * `npm install`
