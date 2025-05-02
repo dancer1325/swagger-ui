@@ -18,11 +18,14 @@
 
 * EXISTING NPM modules
   * [swagger-ui](https://www.npmjs.com/package/swagger-ui)
-    * := traditional npm module
+    * := traditional npm module /
+      * "swagger-ui/dist/swagger-ui.css"
+        * namespaced stylesheet
+      * 's main file -- exports -- Swagger UI's main function
     * uses
       * SPA / -- are capable of -- resolving dependencies (via Webpack, Browserify, etc.)
     * recommendations
-      * use this one
+      * 👀use this one 👀
   * [swagger-ui-dist](https://www.npmjs.com/package/swagger-ui-dist) 
     * := dependency-free module 
     * uses
